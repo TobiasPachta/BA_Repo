@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://8qqinoih2p7d"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_0kdfx"]
+[ext_resource type="PackedScene" uid="uid://bkimjprs202fg" path="res://platform.tscn" id="1_kafrk"]
+[ext_resource type="PackedScene" uid="uid://blpeqdpv1x1rx" path="res://player.tscn" id="2_5nd23"]
+[ext_resource type="Script" path="res://camera_follow.gd" id="4_qss70"]
+
+[node name="Game Manager" type="Node2D"]
+script = ExtResource("1_0kdfx")
+
+[node name="Base platform" parent="." instance=ExtResource("1_kafrk")]
+position = Vector2(327, 758)
+scale = Vector2(20, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_5nd23")]
+position = Vector2(324, 576)
+
+[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player_node")]
+position = Vector2(324, 576)
+editor_draw_limits = true
+script = ExtResource("4_qss70")
+player_node = NodePath("../Player")
